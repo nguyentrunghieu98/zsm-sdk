@@ -1,0 +1,44 @@
+{
+  "name": "zsm-sdk",
+  "version": "0.1.0",
+  "description": "Unofficial TypeScript SDK for a Zalo multi-account sales workspace: session login, account list, contacts, friend requests and messages.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": [
+    "zalo",
+    "sales",
+    "sdk",
+    "multi-account",
+    "n8n"
+  ],
+  "license": "MIT",
+  "author": "zsm-sdk contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nguyentrunghieu98/zsm-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nguyentrunghieu98/zsm-sdk/issues"
+  },
+  "homepage": "https://github.com/nguyentrunghieu98/zsm-sdk#readme",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}

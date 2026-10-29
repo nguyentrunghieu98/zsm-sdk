@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+sessions/
+captures/
+*.har
+*.log
+*.tgz
+.DS_Store
+postman/*.local.json

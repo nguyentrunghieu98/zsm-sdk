@@ -1,0 +1,5862 @@
+{
+  "surveyDate": "2026-10-29",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "scope": "Static analysis of publicly served frontend JavaScript. No authenticated API calls.",
+  "offsetConvention": "Zero-based Unicode character offsets in the decoded source, not byte offsets.",
+  "extractionLimits": [
+    "Only quoted /api/ strings are collected. Computed routes can be missed.",
+    "Query strings are removed from path keys. A key can be a path prefix.",
+    "Methods are recorded only for direct .get/.post/etc calls with a literal first argument. Calls through variables need manual analysis.",
+    "HTTP method alone does not indicate whether an operation mutates state.",
+    "Sources can contain legacy or unreachable code. Entries are candidates, not confirmed backend contracts."
+  ],
+  "endpointPathCount": 212,
+  "endpoints": [
+    {
+      "path": "/api/account",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 497691,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 756631,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 37648,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/autoConnect",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 12771,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/backOffice",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-AccountManagement.dd03364f.js",
+          "characterOffset": 8812,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/delete",
+      "methods": [
+        "DELETE"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 13630,
+          "method": "DELETE",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/account/getAll",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 14263,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 152721,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 162913,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 670052,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 824589,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 218190,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 22586,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 37245,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/getFriendList",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 761404,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/off",
+      "methods": [
+        "PUT"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 12460,
+          "method": "PUT",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/account/save",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 13196,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/setting/get",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 47251,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/account/setting/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 127791,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/ai/config",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 711208,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/ai/execute",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 305300,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 305811,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 622821,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 624012,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 686294,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 689486,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 690240,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 694808,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 705427,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 705954,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 710554,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 711440,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 712132,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 747317,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/auth/verify",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 5490,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 22360,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/characterFilter",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 128215,
+          "method": "PUT",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 128996,
+          "method": "DELETE",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 129260,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 130850,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/characterFilter/all",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 47143,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/cloud/findByAccountId",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 25227,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/cloud/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 139848,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/cloud/setting",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 140201,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/acceptRequest",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 810009,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 463111,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/addFriend",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 822307,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 192356,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 346363,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 173839,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 203029,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 301163,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 462026,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 530508,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 23833,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/addSwContact",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 765824,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 820603,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/aliasV2",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 49740,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/countFriend",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 15405,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/filter",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 669693,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 760651,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 41967,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 331078,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 39295,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 204640,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 581969,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 833314,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 26597,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/friendship",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 161799,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/getAliasByAccountId",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 705110,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 729880,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/recommendFriend",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 810423,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/rejectRequest",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 810221,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 463332,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/removeFriend",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 345180,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 299947,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/requestedFriends",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 810706,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/swContact",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 767815,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/contact/undoFriendRequest",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 809708,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 193072,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 346065,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 174555,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 300865,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 462844,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 24598,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 182780,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 757676,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4506,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/addAdminMemberGr",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 557283,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/all",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 72219,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 22427,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 405463,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 423322,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/changeOwnerGr",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 559862,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/createGroup",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 665967,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 40903,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 38487,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/disperseGroup",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 560514,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/friendRequestStatus",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 192635,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 196919,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 349518,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 174118,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 178452,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 304349,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 561743,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 24440,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/getAiAnalysis",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 715461,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/getAllGroupId",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 49905,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/getCommonGroup",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 662320,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 662570,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/getGroupByMember",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 564321,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/getOne",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 218019,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 763520,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/getOneByPer",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 435562,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 562202,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 704012,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/groupLink",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 148644,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/groupMember",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 803893,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 224511,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 204481,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 741474,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4583,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 40426,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/hidden",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 790549,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 794677,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 189020,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 563096,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 578241,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 14114,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/inviteMembers",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 331550,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 833763,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/leaveGroup",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 792489,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 149450,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 559121,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 579315,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/pin",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 53302,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/pin/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 789721,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 558870,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 577722,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 13755,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/pinMsgList",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4716,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 49250,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 44936,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/pointConversations",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 763881,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/pushNotify",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 790959,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 794846,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 558283,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 578467,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/pushToAnalysis",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 307442,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/read",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 791643,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 37149,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/removeAdminMemberGr",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 557624,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/removeGroupMember",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 202751,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 561021,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/search",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 188720,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/setSwName",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 794418,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 97011,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 308021,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 558126,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 12862,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/tag",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 795110,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 195532,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 177510,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 441285,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 1067,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/typing",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 218508,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 719051,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 759079,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 52918,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 48201,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 44556,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversation/unread",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 791730,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 37066,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversationV2/allV2",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 799194,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/conversationV2/count-by-type",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 797950,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/customer-info",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 10665,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 11047,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/employee/active",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 113523,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/employee/all",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 45181,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 116823,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 817226,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/employee/getAllUsername",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 194268,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/employee/option1",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 116471,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/employee/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 114155,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/file",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 43010,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 340607,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 398987,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/folder",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 94375,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 681930,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 682115,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 503250,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 38732,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 38917,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/hub/cloudSubscription",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 27715,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/hub/getReplaceUrl",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 27345,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/hub/saveImageByClient",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 27025,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/image",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 682471,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 39273,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/image/",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 60696,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 60749,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 674668,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 674721,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 680234,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 494861,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 504217,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 37805,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 18301,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 18354,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 37036,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/image/file",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 98570,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 681714,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 38516,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/image/upload",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 65661,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 68188,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/log",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 817048,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/block",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 792041,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 191698,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 345563,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 300363,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 459933,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 464547,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 563382,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 578890,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 31301,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/crawl",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 34538,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/createGroupTopic",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 468092,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 29100,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/createTopic",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 468124,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 33631,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/delete",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 433283,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 538746,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 542077,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 545954,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 32629,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 28209,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/draft",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 44794,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/filter",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 220899,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 196394,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 197908,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 199637,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 715861,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 716657,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4615,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4893,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 37749,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 34006,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/filterFile",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4664,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 5046,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/filterLink",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4690,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 5105,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/filterMedia",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4637,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4985,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/forwardMessage",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 70604,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 20793,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 403680,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 425831,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/getGroupInfoByLink",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 264531,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 267580,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 272232,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/getProfileInfo",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 347149,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 302016,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 435773,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 561359,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 561953,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4526,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 48950,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/group/mention",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 588130,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 742807,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 24647,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/groupInfoV2",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 802670,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 223686,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 203515,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 739962,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4556,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 39350,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/groupMsg",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 663309,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 797140,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 823756,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 348973,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 149099,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 303837,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 727692,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 728230,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 728651,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 42497,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/groupSticker",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 746140,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/joinGroupFromLink",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 264720,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 267808,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 379796,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/onlineStatus",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 4747,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 45423,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/parseLink",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 721316,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 42443,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 36163,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/pendingMemsGroup",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 370338,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 733583,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 741191,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/pin",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 452447,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 30185,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/pollDetail",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 133972,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 360227,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/removeTopic",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 473258,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/replyGroupMessage",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 219376,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 139440,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 347448,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 589270,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 723094,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 31290,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/replyMessage",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 219409,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 139473,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 347481,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 589303,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 723127,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 36219,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/replyPhoto",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 589590,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 589649,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 723414,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 723473,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 36385,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 36444,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 31472,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 31531,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/reviewJoinGroup",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 370536,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 563869,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/search",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 757184,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/searchInConversation",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 744057,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 744631,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/searchInGroup",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 744028,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 744602,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendContact",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 70305,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 403381,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 425532,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 743489,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 36990,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendFileFromLibrary",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 680512,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 501402,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 37314,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendGroupMsgPhoto",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 724647,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 43721,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendLink",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 725472,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 42965,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 36694,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendMsgFile",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 727104,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 47033,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 22538,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendMsgPhoto",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 724972,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 47768,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendPhoto",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 681067,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 500787,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 37869,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sendReaction",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 380848,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sms",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 663140,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 797096,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 824130,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 194338,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 215894,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 348926,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 136713,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 176250,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 303790,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 338653,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 588571,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 727716,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 728254,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 728675,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 44792,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sticker",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 746187,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/sticker/full",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 746455,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/undo",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 433760,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 32385,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 27928,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/unpin",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 453019,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 30757,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/updateDraft",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 44226,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/updateGroupTopic",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 472576,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/message/updateTopic",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 472608,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/messageV2/filter",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 547116,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 547283,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 547433,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 730060,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 730230,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 730383,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 730556,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 730744,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 730895,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/messageV2/friendRequestStatus",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 462768,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/messageV2/getConversationInfo",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 714604,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/messageV2/getProfileInfo",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 760039,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 799622,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 732375,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/messageV2/onlineStatus",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 717506,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/messageV2/pinMsgList",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 731956,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/payment/createDebt",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 482744,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/payment/genQR",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 483154,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/payment/getDebtDetails",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 483556,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/payment/getDebtHistory",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 483443,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/payment/getMerchantList",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 483299,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/quickMessageConfig",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 69607,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/quickMessageConfig/allByCurrentUser",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 45017,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/quickMessageConfig/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 63537,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/quickMessageConfig/saveMultiple",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 67556,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/quickMessageConfig/update",
+      "methods": [
+        "PUT"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 64384,
+          "method": "PUT",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/search/byPhone",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 187875,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/search/getProfileInfo",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 823364,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/search/searchByPhoneAndAccount",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 822885,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/search/searchNewContact",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 196544,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 178188,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/statistic",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 213700,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/statistic/exportMessageById",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 215088,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/statistic/overview",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 163574,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 173099,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 195161,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/statistic/tag",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 203248,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/addOrder",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 107031,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/address",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 107540,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/customer",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 112759,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/getInitData",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 107339,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/getOrderByCustomerId",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 46446,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/orders",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 115051,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 215374,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/stock/searchProduct",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 110045,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sw-contact/processes",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 148784,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sw-contact/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 147439,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sw-contact/setting",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 147604,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sw-contact/storages",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 148633,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sw-contact/sync-imediately",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 149464,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/accountInfo",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 151726,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/accountInfo-by-accountId",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 151766,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/contact",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 150396,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/contact-by-accountId",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 150432,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/findByAccountIdsAndType",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 153601,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/group",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 150716,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/group-by-accountId",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 150750,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/oldMessage",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 151042,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/oldMessage-by-accountId",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 151081,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/request-sync",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 156885,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/tag",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 151356,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/sync/tag-by-accountId",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 151388,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/tag",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 202704,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 197177,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 178709,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 45141,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-2293628a.e06ed5da.js",
+          "characterOffset": 46114,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-25cb3f91.0004cd32.js",
+          "characterOffset": 43466,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/tag/countConsByTags",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 45534,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/tag/delete",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 44130,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/tag/history",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 673136,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 201655,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-chunk-17b7895e.3df1e992.js",
+          "characterOffset": 16890,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/tag/swap",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 41127,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/tag/tagSetting",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 116316,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/todo/createTodo",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 665106,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/todo/ding",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 56082,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/todo/getTodoList",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 668833,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/todo/reject",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 216298,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 56806,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/todo/removeTask",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 653766,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 222364,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/todo/status",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 654122,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 55830,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 57535,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/user/employee",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-20eff1e6.d8198859.js",
+          "characterOffset": 2838,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/user/employee/authorization",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-20eff1e6.d8198859.js",
+          "characterOffset": 2322,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/user/employee/byAccount",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-20eff1e6.d8198859.js",
+          "characterOffset": 2560,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/user/saveIpWhiteList",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-AccountManagement.dd03364f.js",
+          "characterOffset": 10257,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/user/search",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-AccountManagement.dd03364f.js",
+          "characterOffset": 10436,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/user/termAccept",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 21016,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/customer/config",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 59810,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/customer/getCode",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 59946,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-app.1446406d.js",
+          "characterOffset": 22682,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/customer/getInfo",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 60599,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/customer/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting~ShoppeAccount.c84beaae.js",
+          "characterOffset": 61090,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/folder",
+      "methods": [
+        "DELETE",
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 93244,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 96536,
+          "method": "DELETE",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 497794,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 498147,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": false
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 498364,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/folder/change",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 93922,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/image",
+      "methods": [
+        "DELETE",
+        "GET",
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 95470,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 97248,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 98164,
+          "method": "DELETE",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 498720,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 501530,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 502197,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 502514,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-ShoppeAccount.4cb5bd1c.js",
+          "characterOffset": 503476,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/image/",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 97759,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/image/addToFolder",
+      "methods": [],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 100405,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/image/change",
+      "methods": [
+        "PUT"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 92373,
+          "method": "PUT",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        },
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 99634,
+          "method": null,
+          "evidence": "string-reference",
+          "hasQueryInLiteral": true,
+          "mayBePathPrefix": true
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/tag/merge",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 38769,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/tag/save",
+      "methods": [
+        "POST"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 43245,
+          "method": "POST",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/tag/tagSetting",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 44796,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/v2/tag/update",
+      "methods": [
+        "PUT"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-Setting.c037872a.js",
+          "characterOffset": 43785,
+          "method": "PUT",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/zalo/checkQRScanned",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-dd009e18.12a2b968.js",
+          "characterOffset": 2608,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/zalo/checkQRVerified",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-dd009e18.12a2b968.js",
+          "characterOffset": 3127,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    },
+    {
+      "path": "/api/zalo/getQRCode",
+      "methods": [
+        "GET"
+      ],
+      "runtimeVerified": false,
+      "occurrences": [
+        {
+          "source": "zalo-chunk-dd009e18.12a2b968.js",
+          "characterOffset": 2245,
+          "method": "GET",
+          "evidence": "direct-http-call",
+          "hasQueryInLiteral": false,
+          "mayBePathPrefix": false
+        }
+      ]
+    }
+  ]
+}

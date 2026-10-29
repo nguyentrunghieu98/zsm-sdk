@@ -1,0 +1,360 @@
+{
+  "info": {
+    "_postman_id": "c03f9b68-c3c2-430d-a776-d4ba0b521a16",
+    "name": "zsm-sdk - Manual API Checks",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Bộ request thử thủ công cho luồng Thêm bạn và gắn thẻ. Hợp đồng dựa trên frontend công khai khảo sát 29/10/2026, chưa kiểm chứng bằng phiên hợp lệ. Chọn environment đi kèm. Điền accessToken từ phiên workspace của bạn. Chạy từng request và đọc phản hồi. Không chạy toàn bộ collection vì có request gửi lời mời, bật/tắt thẻ và thử đăng nhập. Không có script tự lưu token hoặc tự chọn tài khoản/người nhận."
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "01 - Xác minh phiên",
+      "item": [
+        {
+          "name": "01 - Verify session",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/verify",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "verify"
+              ]
+            },
+            "description": "Dùng Bearer accessToken. Frontend đọc data.accessToken, data.user, data.sessionId. Nếu trả token mới, tự cập nhật accessToken trong environment. Chưa xác nhận cookie bắt buộc. GET không token/cookie đã trả HTTP 500 khi khảo sát. Không coi HTTP 200 là đủ nếu body có status:error hoặc error_code khác 0."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 - Chọn sale và tìm khách",
+      "item": [
+        {
+          "name": "02 - List Zalo accounts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/account/getAll",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "account",
+                "getAll"
+              ]
+            },
+            "description": "Đọc danh sách data, chọn accountId của sale cần thử và điền environment. Dùng accountId thực tế, không dùng tên hiển thị hoặc mã sale nội bộ thay thế."
+          },
+          "response": []
+        },
+        {
+          "name": "03 - List tags",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/tag",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tag"
+              ]
+            },
+            "description": "Đọc danh sách data và điền tagId nếu cần thử gắn thẻ."
+          },
+          "response": []
+        },
+        {
+          "name": "04 - Search by phone and account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/search/searchNewContact",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search",
+                "searchNewContact"
+              ]
+            },
+            "description": "Điền phone ở dạng quốc tế, ví dụ +84 thay số 0 đầu cho số Việt Nam. Frontend đọc data.profile, data.conversation, data.showConversation. Caller dùng profile.userId cho người nhận và conversation.id cho gắn thẻ. Sau mỗi lần đổi phone/accountId, phải kiểm tra và cập nhật userId/conversationId. Không tự tạo conversationId nếu response không có.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"searchKey\": \"{{phone}}\",\n  \"accountId\": \"{{accountId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "05 - Check friendship status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/conversation/friendRequestStatus",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "conversation",
+                "friendRequestStatus"
+              ]
+            },
+            "description": "Dùng userId của khách vừa tìm. Frontend đọc data.error_code, data.error_message và data.data, trong đó có is_requested. Đọc kết quả trước khi gửi lời mời, không suy diễn toàn bộ bảng trạng thái khi chưa có response thật.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"{{accountId}}\",\n  \"friendId\": \"{{userId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 - Thao tác thay đổi dữ liệu - chạy riêng từng request",
+      "item": [
+        {
+          "name": "06 - Send friend request",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/contact/addFriend?accountId={{accountId}}&userId={{userId}}&msg={{friendRequestMessage}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "contact",
+                "addFriend"
+              ],
+              "query": [
+                {
+                  "key": "accountId",
+                  "value": "{{accountId}}"
+                },
+                {
+                  "key": "userId",
+                  "value": "{{userId}}"
+                },
+                {
+                  "key": "msg",
+                  "value": "{{friendRequestMessage}}"
+                }
+              ]
+            },
+            "description": "GỬI LỜI MỜI THẬT dù dùng GET. Xác nhận accountId/userId đúng khách thử. msg là lời chào. Frontend kiểm tra error_code rồi gọi lại friendRequestStatus. Sau request này, tự chạy lại request 05. Không tự retry khi chưa rõ server đã xử lý hay chưa."
+          },
+          "response": []
+        },
+        {
+          "name": "07 - Toggle conversation tag",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/conversation/tag",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "conversation",
+                "tag"
+              ]
+            },
+            "description": "THAY ĐỔI THẺ THẬT. Frontend gọi cùng endpoint cho gắn hoặc bỏ thẻ. Kiểm tra conversationId và tagId trước khi gửi. Gửi lại có thể bỏ thẻ vừa gắn. Không giả định đây là thao tác add idempotent. Chỉ chạy khi response tìm kiếm có conversationId hợp lệ.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conversationId\": \"{{conversationId}}\",\n  \"tagId\": \"{{tagId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "04 - Đăng nhập bằng form - thử nghiệm, chưa xác minh handoff",
+      "auth": {
+        "type": "noauth"
+      },
+      "item": [
+        {
+          "name": "08 - Open login form",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "url": {
+              "raw": "{{loginBaseUrl}}/login?target=zalo",
+              "host": [
+                "{{loginBaseUrl}}"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "target",
+                  "value": "zalo"
+                }
+              ]
+            },
+            "description": "GET trang đăng nhập để quan sát form/cookie. Postman có cookie jar riêng, không tự dùng cookie trình duyệt. Chưa chứng minh GET này đáp ứng đầy đủ điều kiện đăng nhập.",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "protocolProfileBehavior": {
+            "followRedirects": false
+          }
+        },
+        {
+          "name": "09 - Submit login form - experimental",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "url": {
+              "raw": "{{loginBaseUrl}}/login?target=zalo",
+              "host": [
+                "{{loginBaseUrl}}"
+              ],
+              "path": [
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "target",
+                  "value": "zalo"
+                }
+              ]
+            },
+            "description": "GỬI THÔNG TIN ĐĂNG NHẬP THẬT tới nhà cung cấp. Dựa trên form HTML: username, password, targetUrl. Tắt tự theo redirect để đọc status/Location trong Postman. Chưa xác định cookie, CSRF, chống tự động hóa và bước bàn giao token. Không có script tự lấy accessToken từ phản hồi. HTTP 200 có thể vẫn là trang lỗi đăng nhập, không phải thành công. Chỉ điền username/password cục bộ nếu muốn thử luồng này.",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text"
+                },
+                {
+                  "key": "targetUrl",
+                  "value": "https://workspace.example",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "protocolProfileBehavior": {
+            "followRedirects": false
+          }
+        }
+      ]
+    }
+  ]
+}
