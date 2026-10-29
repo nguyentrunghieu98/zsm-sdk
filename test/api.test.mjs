@@ -72,7 +72,7 @@ test('findUserByPhone normalizes the phone and reads the nested profile', async 
   let seen;
   const { client } = clientWithSession([
     {
-      match: (url) => url.pathname === '/api/search/searchByPhoneAndAccount',
+      match: (url) => url.pathname === '/api/search/searchNewContact',
       respond: (call) => {
         seen = call;
         return json({
@@ -91,15 +91,14 @@ test('findUserByPhone normalizes the phone and reads the nested profile', async 
   assert.equal(profile.name, 'Khách Hàng');
   assert.equal(profile.conversationId, 'conv-1');
 
-  const url = new URL(seen.url);
-  assert.equal(url.searchParams.get('searchKey'), '+84912345678');
-  assert.equal(url.searchParams.get('accountId'), '101');
+  assert.equal(seen.method, 'POST');
+  assert.deepEqual(JSON.parse(seen.body), { searchKey: '+84912345678', accountId: '101' });
   assert.match(seen.headers.get('authorization') ?? '', /^Bearer /);
 });
 
 test('findUserByPhone returns null when the workspace has no profile', async () => {
   const { client } = clientWithSession([
-    { match: (url) => url.pathname === '/api/search/searchByPhoneAndAccount', respond: () => json({ data: {} }) },
+    { match: (url) => url.pathname === '/api/search/searchNewContact', respond: () => json({ data: {} }) },
   ]);
   assert.equal(await client.findUserByPhone('101', '0912345678'), null);
 });

@@ -1,6 +1,6 @@
 {
   "name": "zsm-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial TypeScript SDK for a multi-account sales chat workspace: session login, account list, contacts, friend requests and messages.",
   "type": "module",
   "main": "./dist-cjs/index.js",

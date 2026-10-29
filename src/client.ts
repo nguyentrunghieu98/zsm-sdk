@@ -34,7 +34,7 @@ import type {
 const LOGIN_PATH = '/login';
 const VERIFY_PATH = '/api/auth/verify';
 const ACCOUNTS_PATH = '/api/account/getAll';
-const SEARCH_PHONE_PATH = '/api/search/searchByPhoneAndAccount';
+const SEARCH_PHONE_PATH = '/api/search/searchNewContact';
 const FRIEND_STATUS_PATH = '/api/conversation/friendRequestStatus';
 const ADD_FRIEND_PATH = '/api/contact/addFriend';
 const SEND_MESSAGE_PATH = '/api/message/sms';
@@ -193,7 +193,8 @@ export class ZsmClient {
     if (!phone?.trim()) throw new ZsmError('A phone number is required.');
     await this.#ensureSession();
     const response = await this.#transport.request(SEARCH_PHONE_PATH, {
-      query: { searchKey: toInternationalPhone(phone), accountId },
+      method: 'POST',
+      json: { searchKey: toInternationalPhone(phone), accountId },
       headers: this.#authHeaders(),
     });
     const body = this.#unwrap(response, 'Find user by phone');
