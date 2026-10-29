@@ -5,6 +5,7 @@
  *   npm run build
  *   ZSM_BASE_URL=https://workspace.example \
  *   ZSM_LOGIN_URL=https://login.example \
+ *   ZSM_LOGIN_TARGET=... \
  *   ZSM_USERNAME=... ZSM_PASSWORD=... \
  *   node examples/check-login.mjs
  *
@@ -12,8 +13,8 @@
  */
 import { ZsmClient } from '../dist/index.js';
 
-const { ZSM_BASE_URL, ZSM_LOGIN_URL, ZSM_USERNAME, ZSM_PASSWORD } = process.env;
-const missing = Object.entries({ ZSM_BASE_URL, ZSM_LOGIN_URL, ZSM_USERNAME, ZSM_PASSWORD })
+const { ZSM_BASE_URL, ZSM_LOGIN_URL, ZSM_LOGIN_TARGET, ZSM_USERNAME, ZSM_PASSWORD } = process.env;
+const missing = Object.entries({ ZSM_BASE_URL, ZSM_LOGIN_URL, ZSM_LOGIN_TARGET, ZSM_USERNAME, ZSM_PASSWORD })
   .filter(([, value]) => !value)
   .map(([key]) => key);
 
@@ -21,7 +22,7 @@ if (missing.length) {
   console.error(`Missing environment variables: ${missing.join(', ')}`);
   process.exitCode = 1;
 } else {
-  const client = new ZsmClient({ baseUrl: ZSM_BASE_URL, loginUrl: ZSM_LOGIN_URL });
+  const client = new ZsmClient({ baseUrl: ZSM_BASE_URL, loginUrl: ZSM_LOGIN_URL, loginTarget: ZSM_LOGIN_TARGET });
   try {
     const session = await client.login({ username: ZSM_USERNAME, password: ZSM_PASSWORD });
     const username = typeof session.user?.swUsername === 'string' ? session.user.swUsername : '(unknown)';

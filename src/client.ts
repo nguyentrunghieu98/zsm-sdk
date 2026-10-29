@@ -56,7 +56,8 @@ export class ZsmClient {
       throw new ZsmError('No fetch implementation available. Pass `fetch` in ClientOptions.');
     }
     this.#baseUrl = options.baseUrl.replace(/\/+$/, '');
-    this.#loginTarget = options.loginTarget ?? 'zalo';
+    if (!options.loginTarget) throw new ZsmError('`loginTarget` is required.');
+    this.#loginTarget = options.loginTarget;
     this.#transport = new Transport({
       baseUrl: this.#baseUrl,
       loginUrl: options.loginUrl,
@@ -174,7 +175,7 @@ export class ZsmClient {
     return session;
   }
 
-  /** List the Zalo accounts the signed-in workspace user can operate. */
+  /** List the chat accounts the signed-in workspace user can operate. */
   async listAccounts(): Promise<Account[]> {
     await this.#ensureSession();
     const response = await this.#transport.request(ACCOUNTS_PATH, { headers: this.#authHeaders() });
@@ -186,7 +187,7 @@ export class ZsmClient {
       .filter((account): account is Account => account !== undefined);
   }
 
-  /** Find a Zalo user by phone number, using one sale account to search. */
+  /** Find a contact by phone number, using one sale account to search. */
   async findUserByPhone(accountId: string, phone: string): Promise<ContactProfile | null> {
     requireId(accountId, 'accountId');
     if (!phone?.trim()) throw new ZsmError('A phone number is required.');
@@ -204,7 +205,6 @@ export class ZsmClient {
     const userId =
       asId(profile.userId) ??
       asId(profile.uid) ??
-      asId(profile.zaloId) ??
       asId(data.userId) ??
       asId(data.uid) ??
       asId(conversation?.userId);
@@ -212,14 +212,14 @@ export class ZsmClient {
 
     return {
       userId,
-      name: asString(profile.name) ?? asString(profile.displayName) ?? asString(profile.zaloName),
+      name: asString(profile.name) ?? asString(profile.displayName),
       avatar: asString(profile.avatar) ?? asString(profile.avatarUrl),
       conversationId: asId(data.conversationId) ?? asId(conversation?.id),
       raw: profile,
     };
   }
 
-  /** Read the current friendship / pending-request state for a Zalo user. */
+  /** Read the current friendship / pending-request state for a contact. */
   async getFriendRequestStatus(accountId: string, userId: string): Promise<FriendRequestStatusResult> {
     requireId(accountId, 'accountId');
     requireId(userId, 'userId');
@@ -278,7 +278,7 @@ export class ZsmClient {
     return { status, code, message: messageText, raw: payload };
   }
 
-  /** Send a text message from one sale account to a Zalo user. */
+  /** Send a text message from one sale account to a contact. */
   async sendMessage(input: SendMessageInput): Promise<SendMessageResult> {
     requireId(input.accountId, 'accountId');
     requireId(input.toId, 'toId');
@@ -404,7 +404,6 @@ function normalizeAccount(item: unknown): Account | undefined {
       asString(raw.fullName) ??
       asString(raw.displayName) ??
       asString(raw.accountName) ??
-      asString(raw.zaloName) ??
       asString(raw.alias),
     avatar: asString(raw.avatar) ?? asString(raw.avatarUrl) ?? asString(raw.image) ?? asString(raw.profilePicture),
     status: (asString(raw.status) ?? asNumber(raw.status) ?? asString(raw.sessionStatus) ?? asNumber(raw.active)) as
@@ -431,7 +430,7 @@ function normalizeFriendStatus(data: Record<string, unknown>): FriendRequestStat
   }
 
   const isFriend =
-    asBoolean(data.isFriend) ?? asBoolean(data.is_friend) ?? asBoolean(data.friend) ?? asBoolean(data.is_friend_zalo);
+    asBoolean(data.isFriend) ?? asBoolean(data.is_friend) ?? asBoolean(data.friend);
   if (isFriend) return 'ALREADY_FRIENDS';
   const isRequested = asBoolean(data.isRequested) ?? asBoolean(data.is_requested) ?? asBoolean(data.requested);
   if (isRequested) return 'INVITED';

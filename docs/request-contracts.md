@@ -90,13 +90,13 @@ Caller gửi `accountId`, `searchKey`, `selectedTags`, `page`, `pageSize`, `type
 | POST | `/api/message/delete` | `accountId`, `toId`, `group`, `cliMsgId`, `globalMsgId`, `ownerId`, `destId` |
 | POST | `/api/message/sendReaction` | `accountId`, `toId`, `msgType`, `clientMsgId`, `globalMsgId`, `reactionIcon`, `reactionType`, `group` |
 
-`sms` ở đây được frontend dùng gửi tin Zalo cá nhân. Tên route không chứng minh đó là tin SMS của nhà mạng.
+`sms` ở đây được frontend dùng gửi tin chat cá nhân. Tên route không chứng minh đó là tin SMS của nhà mạng.
 
 Lịch sử `/api/message/filter` dùng cursor `timestamp`. Caller cập nhật cursor từ `ts`, có bước reverse trước khi thêm vào danh sách hiển thị. Cần kiểm chứng thứ tự phản hồi và biên cursor để tránh lặp hoặc thiếu tin nhắn.
 
 `messageV2/filter` có caller không đọc kết quả HTTP, và có handler nhận sự kiện `filterMessageTab`. Đây là bằng chứng gợi ý một số luồng trả dữ liệu qua realtime, cần kiểm chứng correlation request/event. Không mặc định mọi API V2 đều hoạt động như vậy.
 
-Frontend chặn thao tác thu hồi khi tuổi tin nhắn lớn hơn 24 giờ. Đây là giới hạn UI quan sát được, chưa kiểm tra quy định backend hoặc Zalo hiện hành.
+Frontend chặn thao tác thu hồi khi tuổi tin nhắn lớn hơn 24 giờ. Đây là giới hạn UI quan sát được, chưa kiểm tra quy định backend hoặc nền tảng hiện hành.
 
 ### File và ảnh
 

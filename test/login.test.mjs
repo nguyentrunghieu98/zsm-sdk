@@ -11,7 +11,7 @@ function loginHandlers(extra = []) {
   return [
     {
       match: (url, call) => url.hostname === 'login.zsm.test' && url.pathname === '/login' && call.method === 'GET',
-      respond: () => html('<form action="/login?target=zalo" method="post"></form>', { headers: cookie('JSESSIONID', 'pre-auth', 'Domain=zsm.test; Path=/; Secure') }),
+      respond: () => html('<form action="/login?target=test" method="post"></form>', { headers: cookie('JSESSIONID', 'pre-auth', 'Domain=zsm.test; Path=/; Secure') }),
     },
     {
       match: (url, call) => url.hostname === 'login.zsm.test' && url.pathname === '/login' && call.method === 'POST',
@@ -41,7 +41,7 @@ function loginHandlers(extra = []) {
 
 test('login posts the form and exchanges the cookie for an access token', async () => {
   const { fetch, calls } = fakeFetch(loginHandlers());
-  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, fetch });
+  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, loginTarget: 'test', fetch });
 
   const session = await client.login({ username: 'admin', password: 'secret' });
 
@@ -74,14 +74,14 @@ test('wrong credentials raise InvalidCredentialsError without leaking the passwo
     },
     {
       match: (url, call) => url.hostname === 'login.zsm.test' && call.method === 'POST',
-      respond: () => redirect('https://login.zsm.test/login?error=true&target=zalo'),
+      respond: () => redirect('https://login.zsm.test/login?error=true&target=test'),
     },
     {
       match: (url) => url.hostname === 'login.zsm.test' && url.pathname === '/login',
       respond: () => html('<html>please log in</html>'),
     },
   ]);
-  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, fetch });
+  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, loginTarget: 'test', fetch });
 
   await assert.rejects(
     () => client.login({ username: 'admin', password: 'super-secret-password' }),
@@ -108,7 +108,7 @@ test('verify retries without the placeholder bearer header', async () => {
       },
     },
   ]);
-  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, fetch });
+  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, loginTarget: 'test', fetch });
   const session = await client.verify();
 
   assert.equal(session.accessToken, ACCESS_TOKEN);
@@ -123,7 +123,7 @@ test('verify failure raises AuthenticationError with the workspace message', asy
       respond: () => json({ status: 'error', error: { message: 'Session expired', code: 'AUTH' } }, { status: 500 }),
     },
   ]);
-  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, fetch });
+  const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, loginTarget: 'test', fetch });
   await assert.rejects(() => client.verify(), (error) => {
     assert.equal(error.name, 'AuthenticationError');
     assert.match(error.message, /Session expired/);

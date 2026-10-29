@@ -4,7 +4,7 @@ Ngày khảo sát: 29/10/2026. Đây là danh mục tĩnh, chưa gọi API có x
 
 Tổng cộng **212 đường dẫn hoặc tiền tố đường dẫn** sau khi bỏ query string. Method chỉ ghi khi thấy lời gọi HTTP trực tiếp. Chuỗi động có thể bị bỏ sót. Mã frontend có thể chứa luồng cũ hoặc không còn chạy.
 
-URL nguồn và SHA-256 không được lưu trong repo này. `api-catalog.json` lưu mọi vị trí xuất hiện, offset ký tự bắt đầu từ 0 và method theo từng vị trí. Không lưu nội dung cookie, token hoặc bản ghi phiên.
+Một số đường dẫn đã lược bỏ tên nền tảng và thay bằng `<platform>`. URL nguồn và SHA-256 không được lưu trong repo này. `api-catalog.json` lưu mọi vị trí xuất hiện, offset ký tự bắt đầu từ 0 và method theo từng vị trí. Không lưu nội dung cookie, token hoặc bản ghi phiên.
 
 | Nhóm | Method quan sát được | Đường dẫn / tiền tố |
 | --- | --- | --- |
@@ -217,6 +217,6 @@ URL nguồn và SHA-256 không được lưu trong repo này. `api-catalog.json`
 | v2 | POST | `/api/v2/tag/save` |
 | v2 | GET | `/api/v2/tag/tagSetting` |
 | v2 | PUT | `/api/v2/tag/update` |
-| zalo | GET | `/api/zalo/checkQRScanned` |
-| zalo | GET | `/api/zalo/checkQRVerified` |
-| zalo | GET | `/api/zalo/getQRCode` |
+| qr | GET | `/api/<platform>/checkQRScanned` |
+| qr | GET | `/api/<platform>/checkQRVerified` |
+| qr | GET | `/api/<platform>/getQRCode` |

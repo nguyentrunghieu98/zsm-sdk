@@ -6,7 +6,7 @@ Nguồn:
 
 - https://<workspace-host>/v2
 - https://<workspace-host>/js/app.<hash>.js
-- https://<login-host>/login?target=zalo
+- https://<login-host>/login?target=<target>
 
 Đây là bằng chứng đọc frontend công khai, chưa phải hợp đồng API được kiểm chứng bằng request có xác thực. Tên file bundle có thể thay đổi khi nhà cung cấp phát hành phiên bản mới.
 
@@ -26,7 +26,7 @@ Frontend gọi `GET /api/auth/verify` với header `Authorization: Bearer <token
 
 Frontend đọc các trường trong `response.data`: `accessToken`, `loginV2Token`, `ctoken`, `user`, `sessionId`. Axios interceptor trả `response.data`, nên cần kiểm tra envelope thực tế trước khi định nghĩa kiểu dữ liệu.
 
-Khi verify thất bại, một nhánh xử lý chuyển tới `https://<login-host>/login?target=zalo`. HTML trang này có form `POST /login?target=zalo`, với các input `username`, `password`, `targetUrl`. Chưa kiểm chứng đăng nhập thành công, cookie, chuyển hướng, cơ chế bàn giao token, MFA hoặc CAPTCHA nếu có.
+Khi verify thất bại, một nhánh xử lý chuyển tới `https://<login-host>/login?target=<target>`. HTML trang này có form `POST /login?target=<target>`, với các input `username`, `password`, `targetUrl`. Chưa kiểm chứng đăng nhập thành công, cookie, chuyển hướng, cơ chế bàn giao token, MFA hoặc CAPTCHA nếu có.
 
 Frontend có logic kích hoạt xác minh lại khi gần thời điểm hết hạn token. Chưa đủ bằng chứng để khẳng định verify luôn gia hạn phiên hoặc có thể dùng làm refresh token độc lập.
 

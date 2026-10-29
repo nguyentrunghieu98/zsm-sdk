@@ -15,9 +15,9 @@ Khảo sát ngày 29/10/2026, nguồn chính `app.1446406d.js`. Các khuyến ng
 
 | Destination | Nguồn ID | Một số nội dung frontend xử lý |
 | --- | --- | --- |
-| `/session/{sessionId}` | `sessionId` đọc từ verify | `profileInfo`, `friendStatus`, `onlineStatus`, `pinList`, `filterMessageTab`, `SearchMessageDto`, `SearchMessageInnerDto`, `sendByList`, `zaloReactionList` |
+| `/session/{sessionId}` | `sessionId` đọc từ verify | `profileInfo`, `friendStatus`, `onlineStatus`, `pinList`, `filterMessageTab`, `SearchMessageDto`, `SearchMessageInnerDto`, `sendByList`, `reactionList` |
 | `/user/{swUsername}` | `user.swUsername` đọc từ verify | `logoutUser` |
-| `/chat/{accountId}` | Danh sách tài khoản | `read`, `sendBy`, `zaloReaction`, `typing`, `hidden_conversation`, `conversation_tag`, `eventGetCommonGroup`, `updateGrMessage`, `renew_link`, `addNewMessage`, dữ liệu message/conversation ở nhánh mặc định |
+| `/chat/{accountId}` | Danh sách tài khoản | `read`, `sendBy`, `reaction`, `typing`, `hidden_conversation`, `conversation_tag`, `eventGetCommonGroup`, `updateGrMessage`, `renew_link`, `addNewMessage`, dữ liệu message/conversation ở nhánh mặc định |
 
 Không thử subscribe vào bất kỳ destination nào. Cần kiểm chứng quyền trên tài khoản hợp lệ và cách server ràng buộc phiên.
 

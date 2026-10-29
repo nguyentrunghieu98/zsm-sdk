@@ -22,7 +22,7 @@
 - Đã xác định cấu hình STOMP qua SockJS và các subscription tại `realtime-and-optimization.md`, cần kiểm chứng handshake, reconnect và đồng bộ sau mất kết nối.
 - Chỉ tự động retry thao tác ghi khi đã xác định cách tránh gửi trùng.
 
-## 4. Tối ưu luồng và tích hợp Zalo Manager
+## 4. Tối ưu luồng và tích hợp sales manager
 
 - Đo số request và độ trễ của luồng hiện tại để có mốc so sánh.
 - Giảm request trùng, giới hạn đồng thời và xử lý rate limit theo bằng chứng thực tế.

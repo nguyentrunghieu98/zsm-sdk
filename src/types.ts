@@ -5,8 +5,8 @@ export interface ClientOptions {
   baseUrl: string;
   /** Login host that serves the username/password form. Required. */
   loginUrl: string;
-  /** Value of the `target` query used by the login form. Defaults to `zalo`. */
-  loginTarget?: string;
+  /** Required `target` value of the login form, as configured by the workspace. */
+  loginTarget: string;
   /** Per-request timeout in milliseconds. Defaults to 20000. */
   timeoutMs?: number;
   /** Injectable fetch implementation, mainly for tests. */

@@ -13,3 +13,4 @@ captures/
 *.tgz
 .DS_Store
 postman/*.local.json
+postman/

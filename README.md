@@ -1,12 +1,12 @@
 # zsm-sdk
 
-TypeScript SDK không chính thức cho một workspace quản lý **nhiều tài khoản Zalo bán hàng**:
+TypeScript SDK không chính thức cho một workspace quản lý **nhiều tài khoản chat bán hàng**:
 
 - Đăng nhập bằng `username`/`password` của tài khoản quản trị, không cần quét QR cho từng sale.
-- Lấy danh sách tài khoản Zalo mà tài khoản quản trị được phép dùng.
+- Lấy danh sách tài khoản chat mà tài khoản quản trị được phép dùng.
 - Chọn một tài khoản sale để tìm khách theo số điện thoại, kiểm tra quan hệ bạn bè, gửi lời mời kết bạn và gửi tin nhắn.
 
-> ⚠️ **Không chính thức.** Package không liên kết với nhà cung cấp workspace hoặc Zalo. API được quan sát từ frontend công khai và có thể thay đổi không báo trước. Tự động gửi lời mời hoặc tin nhắn có thể vi phạm điều khoản của nhà cung cấp và khiến tài khoản bị hạn chế. Tự chịu trách nhiệm khi dùng.
+> ⚠️ **Không chính thức.** Không liên kết với nhà cung cấp workspace. API có thể thay đổi không báo trước; tự chịu trách nhiệm khi dùng.
 
 ## Tính năng
 
@@ -21,7 +21,7 @@ TypeScript SDK không chính thức cho một workspace quản lý **nhiều tà
 ## Yêu cầu
 
 - Node.js >= 20 (dùng `fetch`, `AbortSignal.timeout`, `Headers.getSetCookie` khi có).
-- Tài khoản quản trị của workspace và một tài khoản sale đã được liên kết Zalo trong workspace.
+- Tài khoản quản trị của workspace và một tài khoản sale đã được liên kết trong workspace.
 
 ## Cài đặt
 
@@ -34,11 +34,12 @@ npm install zsm-sdk
 ```sh
 ZSM_BASE_URL=https://workspace.example
 ZSM_LOGIN_URL=https://login.example
+ZSM_LOGIN_TARGET=
 ZSM_USERNAME=
 ZSM_PASSWORD=
 ```
 
-`baseUrl` là host của workspace, `loginUrl` là host trang đăng nhập. Hai host có thể là subdomain của cùng một domain; SDK giữ cookie phiên theo đúng domain để trao đổi token.
+`baseUrl` là host của workspace, `loginUrl` là host trang đăng nhập. `loginTarget` là giá trị `target` của form đăng nhập do nhà cung cấp quy định; trường này bắt buộc và không có mặc định. Hai host có thể là subdomain của cùng một domain; SDK giữ cookie phiên theo đúng domain để trao đổi token.
 
 ## Bắt đầu
 
@@ -48,6 +49,7 @@ import { ZsmClient } from 'zsm-sdk';
 const client = new ZsmClient({
   baseUrl: process.env.ZSM_BASE_URL!,
   loginUrl: process.env.ZSM_LOGIN_URL!,
+  loginTarget: process.env.ZSM_LOGIN_TARGET!,
 });
 
 await client.login({
@@ -138,18 +140,7 @@ src/errors.ts      lỗi có kiểu
 src/types.ts       public types
 test/              test HTTP mock
 docs/              tài liệu khảo sát hợp đồng API
-postman/           bộ thử thủ công
 ```
-
-## Mức độ kiểm chứng
-
-Đã xác minh trực tiếp trên một workspace thật ngày 29/10/2026:
-
-- Đăng nhập bằng `username`/`password`, đổi cookie phiên lấy access token qua endpoint verify.
-- Liệt kê toàn bộ tài khoản sale, gồm cả tài khoản `ACTIVE` và `OFF`.
-- Tìm khách theo số điện thoại (chỉ đọc) trả `null` khi không có hồ sơ.
-
-Chưa chạy thử gửi lời mời kết bạn hoặc gửi tin nhắn thật trên tài khoản production. Schema phản hồi có thể khác giữa các phiên bản; các trường không ổn định được giữ nguyên trong `raw` thay vì bị che đi.
 
 ## Giấy phép
 
