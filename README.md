@@ -143,7 +143,13 @@ postman/           bộ thử thủ công
 
 ## Mức độ kiểm chứng
 
-Hợp đồng API được đọc từ frontend công khai của workspace. Luồng đăng nhập và schema phản hồi cần được xác minh lại bằng một phiên thật trước khi dùng cho production. Các trường không ổn định được giữ nguyên trong `raw` thay vì bị che đi.
+Đã xác minh trực tiếp trên một workspace thật ngày 29/10/2026:
+
+- Đăng nhập bằng `username`/`password`, đổi cookie phiên lấy access token qua endpoint verify.
+- Liệt kê toàn bộ tài khoản sale, gồm cả tài khoản `ACTIVE` và `OFF`.
+- Tìm khách theo số điện thoại (chỉ đọc) trả `null` khi không có hồ sơ.
+
+Chưa chạy thử gửi lời mời kết bạn hoặc gửi tin nhắn thật trên tài khoản production. Schema phản hồi có thể khác giữa các phiên bản; các trường không ổn định được giữ nguyên trong `raw` thay vì bị che đi.
 
 ## Giấy phép
 
