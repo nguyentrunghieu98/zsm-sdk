@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "description": "Unofficial TypeScript SDK for a multi-account sales chat workspace: session login, account list, contacts, friend requests and messages.",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist-cjs/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist-cjs/index.js"
     }
   },
   "files": [
     "dist",
+    "dist-cjs",
     "README.md",
     "LICENSE"
   ],
@@ -34,9 +36,11 @@
   },
   "homepage": "https://github.com/nguyentrunghieu98/zsm-sdk#readme",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json && node scripts/mark-cjs.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "npm run build && node --test test/*.test.mjs",
+    "test": "npm run build && node --test test/*.test.mjs test/*.test.cjs",
     "prepublishOnly": "npm test"
   },
   "engines": {
@@ -44,5 +48,6 @@
   },
   "devDependencies": {
     "typescript": "~5.9.3"
-  }
+  },
+  "module": "./dist/index.js"
 }
