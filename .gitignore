@@ -4,6 +4,7 @@ coverage/
 *.tsbuildinfo
 .env
 .env.*
+*.env
 !.env.example
 sessions/
 captures/
