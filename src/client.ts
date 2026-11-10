@@ -22,9 +22,16 @@ import type {
   ClientOptions,
   ContactProfile,
   Credentials,
+  FriendContact,
+  FriendListResult,
   FriendRequestResult,
   FriendRequestStatus,
   FriendRequestStatusResult,
+  GroupInfo,
+  GroupMember,
+  GroupMembersResult,
+  InviteMembersInput,
+  InviteMembersResult,
   SendMessageInput,
   SendMessageResult,
   Session,
@@ -37,7 +44,11 @@ const ACCOUNTS_PATH = '/api/account/getAll';
 const SEARCH_PHONE_PATH = '/api/search/searchNewContact';
 const FRIEND_STATUS_PATH = '/api/conversation/friendRequestStatus';
 const ADD_FRIEND_PATH = '/api/contact/addFriend';
+const FRIEND_LIST_PATH = '/api/contact/filter';
 const SEND_MESSAGE_PATH = '/api/message/sms';
+const GROUP_INFO_BY_LINK_PATH = '/api/message/getGroupInfoByLink';
+const INVITE_MEMBERS_PATH = '/api/conversation/inviteMembers';
+const GROUP_MEMBERS_PATH = '/api/conversation/groupMember';
 
 /** Re-verify the session this long before the access token expires. */
 const VERIFY_MARGIN_MS = 30 * 60 * 1000;
@@ -216,8 +227,69 @@ export class ZsmClient {
       name: asString(profile.name) ?? asString(profile.displayName),
       avatar: asString(profile.avatar) ?? asString(profile.avatarUrl),
       conversationId: asId(data.conversationId) ?? asId(conversation?.id),
+      globalId: asString(profile.globalId) ?? asString(data.globalId),
+      // Zalo returns 1/0; it is the authoritative friend flag for THIS account.
+      isFriend: asBoolean(profile.isFr) ?? asBoolean(data.isFr),
       raw: profile,
     };
+  }
+
+  /**
+   * Read every friend of one sale account.
+   *
+   * The workspace returns the friend list as a paged envelope. `pageSize` is
+   * capped server-side at 10000, which is far above the largest observed list
+   * (3650 friends), so one request normally returns everything; the loop below
+   * only runs when a list actually exceeds the page.
+   */
+  async listFriends(accountId: string, options: { pageSize?: number; maxPages?: number } = {}): Promise<FriendListResult> {
+    requireId(accountId, 'accountId');
+    await this.#ensureSession();
+    const pageSize = Math.min(Math.max(Math.trunc(options.pageSize ?? 10_000), 1), 10_000);
+    const maxPages = Math.max(Math.trunc(options.maxPages ?? 10), 1);
+
+    const friends: FriendContact[] = [];
+    const seen = new Set<string>();
+    let totalElements: number | undefined;
+    let complete = true;
+    let lastRaw: unknown = null;
+
+    for (let page = 0; page < maxPages; page += 1) {
+      const response = await this.#transport.request(FRIEND_LIST_PATH, {
+        query: { searchKey: '', accountId, page, pageSize },
+        headers: this.#authHeaders(),
+      });
+      const body = this.#unwrap(response, 'List friends');
+      const data = asRecord(parseJsonValue(body.data)) ?? body;
+      const items = extractList(data.content) ?? extractList(data.list) ?? extractList(data) ?? [];
+      lastRaw = data;
+      totalElements = asNumber(data.totalElements) ?? totalElements;
+
+      let added = 0;
+      for (const item of items) {
+        const row = asRecord(item);
+        if (!row) continue;
+        const uid = asId(row.uid) ?? asId(row.userId);
+        const globalId = asString(row.globalId);
+        if (!uid || !globalId) continue;
+        const key = `${globalId}:${uid}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        friends.push({
+          uid,
+          globalId,
+          displayName: asString(row.displayName),
+          zaloName: asString(row.zaloName),
+          raw: row,
+        });
+        added += 1;
+      }
+
+      if (added === 0 || items.length < pageSize) break;
+      if (page === maxPages - 1) complete = false;
+    }
+
+    return { accountId, friends, complete, totalElements, raw: lastRaw };
   }
 
   /** Read the current friendship / pending-request state for a contact. */
@@ -231,7 +303,7 @@ export class ZsmClient {
       headers: this.#authHeaders(),
     });
     const body = this.#unwrap(response, 'Friend request status');
-    const data = asRecord(parseJsonValue(body.data)) ?? body;
+    const data = unwrapNestedData(body) ?? {};
     return { status: normalizeFriendStatus(data), raw: data };
   }
 
@@ -256,12 +328,26 @@ export class ZsmClient {
     assertOk(response, 'Send friend request');
 
     const body = asRecord(response.json) ?? {};
-    const payload = asRecord(parseJsonValue(body.data)) ?? body;
-    const code = asNumber(payload.error_code) ?? asNumber(body.error_code);
-    const messageText = asString(payload.error_message) ?? asString(body.error_message);
-    const isRequested = asBoolean(payload.is_requested) ?? asBoolean(payload.isRequested) ?? asBoolean(body.is_requested);
-    const isFriend =
-      asBoolean(payload.is_friend) ?? asBoolean(payload.isFriend) ?? asBoolean(body.is_friend) ?? asBoolean(body.isFriend);
+    const payload = unwrapNestedData(body) ?? {};
+    // The workspace answers in two shapes: `{ data: { error_code, ... } }` and
+    // `{ data: { error_code, error_message, data: { ... } } }`. Read both layers.
+    const inner = asRecord(parseJsonValue(body.data)) ?? {};
+    const layers = [payload, inner, body];
+    const firstOf = <T>(pick: (layer: Record<string, unknown>) => T | undefined): T | undefined => {
+      for (const layer of layers) {
+        const value = pick(layer);
+        if (value !== undefined) return value;
+      }
+      return undefined;
+    };
+    const code = firstOf((layer) => asNumber(field(layer, 'error_code') ?? field(layer, 'code')));
+    const messageText = firstOf(
+      (layer) => asString(field(layer, 'error_message') ?? field(layer, 'message')),
+    );
+    const isRequested = firstOf(
+      (layer) => asBoolean(field(layer, 'is_requested') ?? field(layer, 'isRequested')),
+    );
+    const isFriend = firstOf((layer) => asBoolean(field(layer, 'is_friend') ?? field(layer, 'isFriend')));
 
     let status: FriendRequestStatus;
     if (code === 222) {
@@ -291,10 +377,107 @@ export class ZsmClient {
       headers: this.#authHeaders(),
     });
     const body = this.#unwrap(response, 'Send message');
-    const data = asRecord(parseJsonValue(body.data)) ?? body;
+    const data = unwrapNestedData(body) ?? body;
     const messageId =
       asId(data.cliMsgId) ?? asId(data.msgId) ?? asId(data.messageId) ?? asId(data.id) ?? asId(body.cliMsgId);
     return { messageId, raw: data };
+  }
+
+  /**
+   * Resolve a Zalo group from its join link, e.g. `https://zalo.me/g/abc12345`.
+   *
+   * Contract observed in the workspace web client:
+   * `GET /api/message/getGroupInfoByLink?accountId=...&link=...` and the group
+   * object is returned under `body.data`.
+   */
+  async getGroupInfoByLink(accountId: string, link: string): Promise<GroupInfo | null> {
+    requireId(accountId, 'accountId');
+    if (!link?.trim()) throw new ZsmError('A group link is required.');
+    await this.#ensureSession();
+    const response = await this.#transport.request(GROUP_INFO_BY_LINK_PATH, {
+      query: { accountId, link },
+      headers: this.#authHeaders(),
+    });
+    const body = this.#unwrap(response, 'Get group info by link');
+    const data = unwrapNestedData(body) ?? {};
+    const groupId = asId(data.groupId) ?? asId(data.id) ?? asId(data.toId);
+    if (!groupId) return null;
+    return {
+      groupId,
+      name: asString(data.name) ?? asString(data.groupName) ?? asString(data.title),
+      creatorId: asId(data.creatorId) ?? asId(data.creator_id),
+      memberCount:
+        asNumber(data.memberCount) ?? asNumber(data.totalMember) ?? asNumber(data.member_count),
+      members: extractGroupMembers(data.currentMems ?? data.members),
+      raw: data,
+    };
+  }
+
+  /**
+   * Invite (add) members to a group from one sale account.
+   *
+   * Contract observed in the workspace web client:
+   * `POST /api/conversation/inviteMembers` with `{ groupId, accountId, membersId }`.
+   * The endpoint mutates state; the SDK never retries it.
+   */
+  async inviteMembers(input: InviteMembersInput): Promise<InviteMembersResult> {
+    requireId(input.accountId, 'accountId');
+    requireId(input.groupId, 'groupId');
+    const memberIds = [...new Set((input.memberIds || []).map((id) => String(id).trim()).filter(Boolean))];
+    if (!memberIds.length) throw new ZsmError('At least one member id is required.');
+    await this.#ensureSession();
+    const response = await this.#transport.request(INVITE_MEMBERS_PATH, {
+      method: 'POST',
+      json: { groupId: input.groupId, accountId: input.accountId, membersId: memberIds },
+      headers: this.#authHeaders(),
+    });
+    assertOk(response, 'Invite group members');
+    const body = asRecord(response.json) ?? {};
+    const envelope = asRecord(parseJsonValue(body.data)) ?? asRecord(body.data) ?? {};
+    const data = unwrapNestedData(body) ?? {};
+    const code =
+      asNumber(field(envelope, 'error_code')) ?? asNumber(field(data, 'error_code')) ?? asNumber(body.error_code);
+    const message =
+      asString(field(envelope, 'error_message')) ??
+      asString(field(data, 'error_message')) ??
+      asString(body.error_message) ??
+      asString(body.message);
+
+    let status: InviteMembersResult['status'] = 'UNKNOWN';
+    if (code === 0 || message === 'Successful.') status = 'INVITED';
+    else if (message && /already|đã là thành viên|da la thanh vien|đã tham gia|da tham gia/i.test(message)) status = 'ALREADY_IN_GROUP';
+    else if (code !== undefined && code !== 0) status = 'FAILED';
+
+    return { status, code, message, raw: body };
+  }
+
+  /**
+   * Check which of the supplied user ids are current members of a group.
+   *
+   * There is no dedicated membership endpoint: `POST /api/conversation/groupMember`
+   * only resolves a user profile (it answers with a profile even when that user is
+   * not in the group). Membership is therefore read from the group's own member
+   * list returned by `getGroupInfoByLink` (`currentMems`).
+   */
+  async getGroupMembers(accountId: string, groupLink: string, memberIds: string[]): Promise<GroupMembersResult> {
+    requireId(accountId, 'accountId');
+    if (!groupLink?.trim()) throw new ZsmError('A group link is required to check membership.');
+    const ids = [...new Set((memberIds || []).map((id) => String(id).trim()).filter(Boolean))];
+    if (!ids.length) throw new ZsmError('At least one member id is required.');
+
+    const info = await this.getGroupInfoByLink(accountId, groupLink);
+    if (!info) throw new ApiError('Could not resolve the group link while checking membership.', { status: 200 });
+
+    const allMembers = info.members ?? [];
+    const present = new Set(allMembers.map((member) => String(member.id)));
+    const matched = allMembers.filter((member) => ids.includes(String(member.id)));
+    return {
+      memberIds: ids.filter((id) => present.has(id)),
+      members: matched,
+      /** `true` when the workspace returned the full member list (no pagination). */
+      complete: !asBoolean(info.raw.hasMoreMember),
+      raw: info.raw,
+    };
   }
 
   async #ensureSession(): Promise<void> {
@@ -345,6 +528,24 @@ function wasRejected(response: TransportResponse): boolean {
   });
 }
 
+/**
+ * The workspace wraps some responses twice:
+ * `{ status, data: { error_code, error_message, data: {...} } }`.
+ * Returns the innermost object, falling back to `body.data` then the body.
+ */
+function field(data: Record<string, unknown>, key: string): unknown {
+  return Object.prototype.hasOwnProperty.call(data, key) ? data[key] : undefined;
+}
+
+function unwrapNestedData(body: Record<string, unknown>): Record<string, unknown> | undefined {
+  const outer = asRecord(parseJsonValue(body.data)) ?? asRecord(body.data);
+  if (!outer) return body;
+  const inner = asRecord(parseJsonValue(outer.data)) ?? asRecord(outer.data);
+  if (inner) return inner;
+  const { error_code: _code, error_message: _message, ...rest } = outer;
+  return rest;
+}
+
 function envelopeError(response: TransportResponse): { message: string; code?: string | number } | undefined {
   const body = asRecord(response.json);
   if (!body) {
@@ -391,6 +592,24 @@ function extractList(value: unknown): unknown[] | undefined {
     if (Array.isArray(record[key])) return record[key] as unknown[];
   }
   return undefined;
+}
+
+function extractGroupMembers(value: unknown): GroupMember[] {
+  const list = Array.isArray(value) ? value : extractList(value);
+  if (!list) return [];
+  return list
+    .map((item): GroupMember | undefined => {
+      const raw = asRecord(item);
+      if (!raw) return undefined;
+      const id = asId(raw.id) ?? asId(raw.userId) ?? asId(raw.uid) ?? asId(raw.memberId);
+      if (!id) return undefined;
+      return {
+        id,
+        name: asString(raw.name) ?? asString(raw.displayName) ?? asString(raw.swName),
+        raw,
+      };
+    })
+    .filter((member): member is GroupMember => member !== undefined);
 }
 
 function normalizeAccount(item: unknown): Account | undefined {

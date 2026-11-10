@@ -96,9 +96,50 @@ if (profile) {
 | `getFriendRequestStatus(accountId, userId)` | `ALREADY_FRIENDS`, `INVITED`, `NONE`, `UNKNOWN`… |
 | `sendFriendRequest(accountId, userId, message?)` | Gửi lời mời; không tự retry. |
 | `sendMessage({ accountId, toId, message })` | Gửi tin nhắn văn bản. |
+| `getGroupInfoByLink(accountId, link)` | Lấy group ID/tên/thành viên từ link `https://zalo.me/g/...`. |
+| `inviteMembers({ accountId, groupId, memberIds })` | Mời/thêm thành viên vào nhóm. Endpoint thay đổi trạng thái, không tự retry. |
+| `getGroupMembers(accountId, memberIds)` | Kiểm tra user ID nào đang là thành viên nhóm. |
 | `logout()` | Xóa session và cookie trong bộ nhớ. |
 
 Mỗi object trả về đều giữ trường `raw` để đối chiếu khi schema của workspace thay đổi.
+
+## Group API (đã POC thành công)
+
+Đã kiểm chứng với workspace thật ngày 2026-11-09: mời khách vào nhóm GOLD khiến
+danh sách thành viên tăng 10 → 11.
+
+| Method | Endpoint | Ghi chú |
+| --- | --- | --- |
+| `getGroupInfoByLink(accountId, link)` | `GET /api/message/getGroupInfoByLink` | Response **lồng 2 lớp**: `{status, data:{error_code, error_message, data:{...}}}`. Group object nằm ở lớp trong. |
+| `getGroupMembers(accountId, groupLink, memberIds)` | (dùng `getGroupInfoByLink`) | Membership đọc từ `currentMems`. |
+| `inviteMembers({accountId, groupId, memberIds})` | `POST /api/conversation/inviteMembers` | Thành công khi `error_message === "Successful."`. |
+
+### Bài học khi tích hợp
+
+- `POST /api/conversation/groupMember` **không phải** API kiểm tra thành viên. Nó chỉ
+  tra hồ sơ user và trả về profile kể cả khi người đó không ở trong nhóm. Dùng nó để
+  kết luận membership sẽ luôn báo sai.
+- `currentMems` có thể bị phân trang: kiểm tra `hasMoreMember`. Khi nhóm đông
+  (`hasMoreMember: 1`), kết quả "không có trong danh sách" chưa chắc là "chưa vào nhóm".
+- Mỗi account Zalo có "tầm nhìn" SĐT khác nhau: account A có thể tìm thấy một số mà
+  account B không thấy. Workflow nên fallback sang account khác trước khi đánh `NOT_FOUND`.
+- Nhóm để `joinAppr: 0` thì mời là vào ngay. `addMemberOnly: 0` cho phép thành viên
+  thường mời người khác.
+
+### Probe thử nghiệm
+
+```sh
+cp .env.example .env.local   # điền base URL, login URL, target, username, password
+node probe-group.mjs --list-accounts
+node probe-group.mjs --account-id <id> --phone 0900000000 --group-link https://zalo.me/g/xxxx --check-member
+node probe-group.mjs --account-id <id> --phone 0900000000 --add-friend --yes
+node probe-group.mjs --account-id <id> --phone 0900000000 --group-link https://zalo.me/g/xxxx --invite --yes
+```
+
+`--invite --yes` và `--add-friend --yes` mới thực sự gọi API ghi. Không dùng số khách thật cho lần test đầu.
+
+Nếu login trả HTTP 400 hàng loạt, đó là rate limit theo IP: **chờ 30–60 giây** và chạy
+từng lệnh một, không quét toàn bộ account liên tiếp.
 
 ## Phiên và bảo mật
 

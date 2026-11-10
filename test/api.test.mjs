@@ -169,3 +169,108 @@ test('calls without a session fail fast', async () => {
   const client = new ZsmClient({ baseUrl: BASE, loginUrl: LOGIN, loginTarget: 'test', fetch });
   await assert.rejects(() => client.listAccounts(), /No session available/);
 });
+
+test('findUserByPhone exposes the global id and the per-account friend flag', async () => {
+  const { client } = clientWithSession([
+    {
+      match: (url) => url.pathname === '/api/search/searchNewContact',
+      respond: () =>
+        json({
+          data: {
+            profile: {
+              userId: 'uid-account-a',
+              displayName: 'Nguyen',
+              globalId: 'GLOBALIDFIXTURE00000000000000001',
+              isFr: 1,
+            },
+          },
+        }),
+    },
+  ]);
+
+  const profile = await client.findUserByPhone('101', '0900000000');
+  assert.ok(profile);
+  assert.equal(profile.userId, 'uid-account-a');
+  assert.equal(profile.globalId, 'GLOBALIDFIXTURE00000000000000001');
+  assert.equal(profile.isFriend, true);
+});
+
+test('findUserByPhone maps isFr=0 to a non-friend profile', async () => {
+  const { client } = clientWithSession([
+    {
+      match: (url) => url.pathname === '/api/search/searchNewContact',
+      respond: () =>
+        json({ data: { profile: { userId: 'uid-account-b', globalId: 'GLOBAL2', isFr: 0 } } }),
+    },
+  ]);
+
+  const profile = await client.findUserByPhone('102', '0900000000');
+  assert.equal(profile.globalId, 'GLOBAL2');
+  assert.equal(profile.isFriend, false);
+});
+
+test('listFriends reads every page and keeps uid/globalId', async () => {
+  const { client, calls } = clientWithSession([
+    {
+      match: (url) => url.pathname === '/api/contact/filter',
+      respond: (call) => {
+        const page = Number(new URL(`https://x${call.search}`).searchParams.get('page') ?? '0');
+        if (page === 0) {
+          return json({
+            data: {
+              content: [
+                { uid: 'u-1', globalId: 'G-1', displayName: 'A' },
+                { uid: 'u-2', globalId: 'G-2', displayName: 'B' },
+              ],
+              totalElements: 3,
+            },
+          });
+        }
+        return json({
+          data: { content: [{ uid: 'u-3', globalId: 'G-3', displayName: 'C' }], totalElements: 3 },
+        });
+      },
+    },
+  ]);
+
+  const result = await client.listFriends('101', { pageSize: 2 });
+  assert.equal(result.complete, true);
+  assert.equal(result.totalElements, 3);
+  assert.deepEqual(
+    result.friends.map((friend) => [friend.uid, friend.globalId]),
+    [
+      ['u-1', 'G-1'],
+      ['u-2', 'G-2'],
+      ['u-3', 'G-3'],
+    ],
+  );
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0].method, 'GET');
+  assert.match(calls[0].search, /accountId=101/);
+  assert.match(calls[0].search, /searchKey=/);
+});
+
+test('listFriends drops rows without a global id and de-duplicates', async () => {
+  const { client } = clientWithSession([
+    {
+      match: (url) => url.pathname === '/api/contact/filter',
+      respond: () =>
+        json({
+          data: {
+            content: [
+              { uid: 'u-1', globalId: 'G-1' },
+              { uid: 'u-1', globalId: 'G-1' },
+              { uid: 'u-2' },
+            ],
+          },
+        }),
+    },
+  ]);
+
+  const result = await client.listFriends('101');
+  assert.deepEqual(
+    result.friends.map((friend) => friend.globalId),
+    ['G-1'],
+  );
+});
+

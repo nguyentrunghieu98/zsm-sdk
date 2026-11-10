@@ -15,6 +15,8 @@ export type {
   ClientOptions,
   ContactProfile,
   Credentials,
+  FriendContact,
+  FriendListResult,
   FriendRequestResult,
   FriendRequestStatus,
   FriendRequestStatusResult,
